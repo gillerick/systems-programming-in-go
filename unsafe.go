@@ -9,7 +9,7 @@ func main()  {
 	var value int64 = 5
 
 	var p1 = &value //Pointer to value
-	var p2 = (*int64)(unsafe.Pointer(p1))
+	var p2 = (*int32)(unsafe.Pointer(p1))
 
 
 	fmt.Println("*p1: ", *p1)
@@ -19,5 +19,7 @@ func main()  {
 	fmt.Println(value)
 	fmt.Println("*p2: ", *p2)
 	*p1 = 31212132
+	fmt.Println(value)
+	fmt.Println("*p2: ", *p2)
 
 }
