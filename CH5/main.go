@@ -18,4 +18,6 @@ func main() {
 	for index, val := range flag.Args() {
 		fmt.Println(index, ":", val)
 	}
+
+	// Implementat
 }
