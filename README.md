@@ -17,3 +17,4 @@ Tsoukalos' [Go Systems Programming](https://www.packtpub.com/product/go-systems-
 | _pattern \{n,\}m_ | Works like the above pattern but matches at least n occurrence if the preceding pattern                                                                                              |
 | _pattern \{n,m\}_ | Matches any number of occurrences between n and m of the preceding pattern                                                                                                           |
 
+## wc
