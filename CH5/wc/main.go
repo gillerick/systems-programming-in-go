@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+
 	minusC := flag.Bool("c", false, "prints characters")
 	minusW := flag.Bool("w", false, "prints words")
 	minusL := flag.Bool("l", false, "prints words")
@@ -81,6 +82,7 @@ func main() {
 			fmt.Printf("\ttotal\n")
 		}
 	}
+
 
 }
 
