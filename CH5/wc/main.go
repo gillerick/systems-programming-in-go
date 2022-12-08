@@ -10,6 +10,77 @@ import (
 )
 
 func main() {
+	minusC := flag.Bool("c", false, "Characters")
+	minusW := flag.Bool("w", false, "Words")
+	minusL := flag.Bool("l", false, "Lines")
+
+	flag.Parse()
+	flags := flag.Args()
+
+	if len(flags) == 0 {
+		fmt.Printf("usage: wc <file1> [<file2> [... <fileN>]]\n")
+		os.Exit(1)
+	}
+
+	totalLines := 0
+	totalWords := 0
+	totalCharacters := 0
+	printAll := false
+
+	for _, filename := range flag.Args() {
+		numberOfLines, numberOfWords, numberOfCharacters := countLines(filename)
+
+		totalLines += numberOfLines
+		totalWords += numberOfWords
+		totalCharacters += numberOfCharacters
+
+		if (*minusC && *minusW && *minusL) || (!*minusC && !*minusW && !*minusL) {
+			fmt.Printf("%d", numberOfLines)
+			fmt.Printf("\t%d", numberOfWords)
+			fmt.Printf("\t%d", numberOfCharacters)
+			fmt.Printf("\t%s", filename)
+			printAll = true
+			continue
+		}
+
+		if *minusL {
+			fmt.Printf("%d", numberOfLines)
+		}
+
+		if *minusW {
+			fmt.Printf("\t%d", numberOfWords)
+		}
+
+		if *minusC {
+			fmt.Printf("\t%d", numberOfCharacters)
+		}
+
+		fmt.Printf("\t%s\n", filename)
+
+		if (len(flags) != 1) && printAll {
+			fmt.Printf("%d", totalLines)
+			fmt.Printf("\t%d", totalWords)
+			fmt.Printf("\t%d", totalCharacters)
+			fmt.Println("\ttotal")
+			return
+		}
+
+		if (len(flags) != 1) && *minusL {
+			fmt.Printf("%d", totalLines)
+		}
+
+		if (len(flags) != 1) && *minusW {
+			fmt.Printf("\t%d", totalWords)
+		}
+
+		if (len(flags) != 1) && *minusC {
+			fmt.Printf("\t%d", totalCharacters)
+		}
+
+		if len(flags) != 1 {
+			fmt.Printf("\ttotal\n")
+		}
+	}
 
 	minusC := flag.Bool("c", false, "prints characters")
 	minusW := flag.Bool("w", false, "prints words")
