@@ -23,11 +23,15 @@ func main() {
 }
 
 func walkFunction(path string, info os.FileInfo, err error) error {
-	_, err = os.Stat(path)
+	fileInfo, err := os.Stat(path)
 	if err != nil {
 		return err
 	}
 
-	fmt.Println(path)
+	// This checks if the file is a directory or a regular file, otherwise skips it
+	mode := fileInfo.Mode()
+	if mode.IsDir() || mode.IsRegular() {
+		fmt.Println(path)
+	}
 	return nil
 }
