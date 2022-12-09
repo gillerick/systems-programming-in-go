@@ -10,9 +10,9 @@ import (
 )
 
 func main() {
-	minusC := flag.Bool("c", false, "Characters")
-	minusW := flag.Bool("w", false, "Words")
-	minusL := flag.Bool("l", false, "Lines")
+	minusC := flag.Bool("c", false, "prints characters")
+	minusW := flag.Bool("w", false, "prints words")
+	minusL := flag.Bool("l", false, "prints words")
 
 	flag.Parse()
 	flags := flag.Args()
